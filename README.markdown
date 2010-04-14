@@ -43,6 +43,7 @@ TODO
  * [ ] write TIFF and callfile
  * [ ] procmail mode
  * [ ] header and footer for every frame
+ * [ ] check if fax was delivered (callfile moved to outgoing_done)
 
 Meta
 ====
