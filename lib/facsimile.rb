@@ -68,6 +68,17 @@ class Facsimile
     frames.write(path)
   end
 
+  def filename
+    "#{id}.tiff"
+  end
+
+  def id
+    unless mail.has_message_id?
+      mail.add_message_id("#{Time.now.iso8601}-#{Process.pid}")
+    end
+    mail.message_id
+  end
+
   private
 
   def add_frames(tiffs=nil)

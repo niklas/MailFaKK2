@@ -25,6 +25,14 @@ describe "text only as IO (like STDIN)" do
   it 'should find #number' do
     @fax.number.should == '01189998819991197253'
   end
+
+  it 'should provide id (even if no message_id in mail)' do
+    @fax.id.should_not be_blank
+  end
+
+  it 'should provide filename' do
+    @fax.filename.should =~ /.{10,}\.tiff/
+  end
 end
 
 describe "multipart from word mail client" do

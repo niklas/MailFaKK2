@@ -6,3 +6,4 @@ fax = Facsimile.new(STDIN)
 fax.render
 
 puts "We found #{fax.frames.count} frames"
+puts "can save under #{fax.filename}"
