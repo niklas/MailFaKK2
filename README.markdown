@@ -8,6 +8,7 @@ Motivation
 ==========
 
 After trying out several other gateways we did not find any which
+
  * does not need java
  * is compatible with asterisk 1.6
  * does not cost money
@@ -20,6 +21,7 @@ Installation
 
 Debian / Ubuntu
 ---------------
+
  * sudo apt-get install imagemagick gs unoconv openoffice.org-headless rubygems
  * sudo gem install active_support andand rmagick mail prawn
 
@@ -32,6 +34,7 @@ Speed is not a priority for us (yet).
 
 TODO
 ====
+
  * [x] generate cover sheet TIFF frame from email body
  * [x] append OpenOffice.org documents 
  * [ ] append MS Office documents
