@@ -9,5 +9,11 @@ describe "mime with text only" do
   it 'should find #number' do
     @fax.number.should == '01189998819991197253'
   end
+
+  it 'should render 1 frame from body' do
+    @fax.render
+    @fax.frames.should be_an(Magick::ImageList)
+    @fax.should have(1).frame
+  end
   
 end

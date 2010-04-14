@@ -4,5 +4,8 @@ require 'active_support'
 require 'fileutils'
 require 'andand'
 require 'mail'
+require 'prawn'
+require 'RMagick'
+require 'tempfile'
 
 require 'lib/facsimile'
