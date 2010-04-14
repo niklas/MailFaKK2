@@ -6,7 +6,6 @@ To: Fax <fax@example.com>
 Date: Tue, 13 Apr 2010 21:31:58 +0200
 Subject: A simple text to fax
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
 MIME-Version: 1.0
 
 Dear reader,

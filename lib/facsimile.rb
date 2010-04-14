@@ -31,8 +31,8 @@ class Facsimile
 
   def render
 
-    unless mail.body.blank?
-      text2tiff( mail.body.encoded ).each do |tiff|
+    unless mail.body.decoded.blank?
+      text2tiff( mail.body.decoded ).each do |tiff|
         frames << tiff
       end
     end
