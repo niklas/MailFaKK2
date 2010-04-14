@@ -2,6 +2,8 @@
 
 require File.expand_path(File.join(File.dirname(__FILE__),'..','config','env'))
 
+
+fakk = MailFakk2.deliver(STDIN)
 fax = Facsimile.new(STDIN)
 fax.render
 
