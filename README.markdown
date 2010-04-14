@@ -24,7 +24,7 @@ Installation
 Debian / Ubuntu
 ---------------
 
- * sudo apt-get install imagemagick gs unoconv openoffice.org-headless rubygems
+ * sudo apt-get install imagemagick gs unoconv openoffice.org-headless rubygems xvfb
  * sudo gem install active_support andand rmagick mail prawn
 
 Cons
