@@ -1,0 +1,3 @@
+# put this into ~fax/.procmailrc
+:0
+| mailfakk2
