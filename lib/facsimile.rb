@@ -104,7 +104,8 @@ class Facsimile
     source.close
 
     dest = mktemp('pdf')
-    system("unoconv -f pdf --stdout #{source.path} > #{dest.path}")
+    xvfb("unoconv -f pdf #{source.path}")
+    FileUtils.mv source.path + '.pdf', dest.path
     pdf2tiff(dest.path)
   end
 
@@ -137,6 +138,10 @@ class Facsimile
 
   def pagesize
     'a4'
+  end
+
+  def xvfb(command)
+    system("xvfb-run --auto-servernum --server-num=23 #{command}")
   end
 
 
