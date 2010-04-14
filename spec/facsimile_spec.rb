@@ -15,7 +15,16 @@ describe "text only" do
     @fax.frames.should be_an(Magick::ImageList)
     @fax.should have(1).frame
   end
-  
+end
+
+describe "text only as IO (like STDIN)" do
+  before(:each) do
+    @fax = Facsimile.new File.open( mail_path('only_text') )
+  end
+
+  it 'should find #number' do
+    @fax.number.should == '01189998819991197253'
+  end
 end
 
 describe "multipart from word mail client" do

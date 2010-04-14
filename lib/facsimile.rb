@@ -8,14 +8,16 @@ class Facsimile
   class NoPhoneNumberFound < Exception; end
   class NoContentFound < Exception; end
 
-  attr_reader :source_path
   attr_reader :frames
   attr_reader :mail
 
-  def initialize(source_path)
-    @source_path = source_path
+  def initialize(source)
+    if source.is_a?(IO)
+      @mail = Mail.new(source.read)
+    else
+      @mail = Mail.read(source)
+    end
     @frames = Magick::ImageList.new
-    @mail = Mail.read source_path
     @tempfiles = []
   end
 

@@ -1,3 +1,8 @@
 #!/usr/bin/env ruby
 
+require File.expand_path(File.join(File.dirname(__FILE__),'..','config','env'))
 
+fax = Facsimile.new(STDIN)
+fax.render
+
+puts "We found #{fax.frames.count} frames"
