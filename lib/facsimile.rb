@@ -37,9 +37,9 @@ class Facsimile
       mail.parts.each do |part|
         case part.content_type
         when %r'text/plain'
-          text2tiff( part.decoded ).each do |tiff|
-            frames << tiff
-          end
+          add_frames text2tiff( part.decoded )
+        when %r'opendocument\.text'
+          add_frames oo2tiff( part.decoded )
         when %r'text/html'
           # FIXME ignore html, let's hope a plain text contained everything important
         else
@@ -68,9 +68,16 @@ class Facsimile
 
   private
 
+  def add_frames(tiffs=nil)
+    return unless tiffs
+    tiffs.each do |tiff|
+      frames << tiff
+    end
+  end
+
   def text2tiff(text)
     pdf = text2pdf(text)
-    read_frame pdf2tiff(pdf)
+    pdf2tiff(pdf)
   end
 
   def pdf2tiff(source)
@@ -88,7 +95,17 @@ class Facsimile
       gs << '-c quit'
     end.join(' ')
     system(command)
-    dest.path
+    read_frame dest.path
+  end
+
+  def oo2tiff(source_data)
+    source = mktemp('oo', false)
+    source.write source_data
+    source.close
+
+    dest = mktemp('pdf')
+    system("unoconv -f pdf --stdout #{source.path} > #{dest.path}")
+    pdf2tiff(dest.path)
   end
 
   def text2pdf(source)
@@ -112,9 +129,9 @@ class Facsimile
     Magick::Image.read(source)
   end
 
-  def mktemp(name)
+  def mktemp(name,close=true)
     tmp = Tempfile.new(name)
-    tmp.close
+    tmp.close if close
     tmp
   end
 

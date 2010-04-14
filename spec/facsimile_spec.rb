@@ -34,3 +34,17 @@ describe "multipart from word mail client" do
     @fax.should have(1).frame
   end
 end
+
+
+describe "text with attached OpenOffice Writer Document (2 Pages)" do
+  before(:each) do
+    @mail_path = mail_path('oo_writer_attached')
+    @fax = Facsimile.new @mail_path
+  end
+
+  it 'should produce 1+2 frames' do
+    @fax.write result_path('oo_writer_attached')
+    @fax.should have(3).frames
+  end
+  
+end
