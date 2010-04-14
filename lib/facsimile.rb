@@ -6,6 +6,7 @@ class Facsimile
   #include ActiveSupport::Memoization
 
   class NoPhoneNumberFound < Exception; end
+  class NoContentFound < Exception; end
 
   attr_reader :source_path
   attr_reader :frames
@@ -31,22 +32,36 @@ class Facsimile
 
   def render
 
-    unless mail.body.decoded.blank?
-      text2tiff( mail.body.decoded ).each do |tiff|
-        frames << tiff
-      end
-    end
-
     if mail.multipart?
+
       mail.parts.each do |part|
-        STDERR.puts "TODO evaluate parts"
+        case part.content_type
+        when %r'text/plain'
+          text2tiff( part.decoded ).each do |tiff|
+            frames << tiff
+          end
+        when %r'text/html'
+          # FIXME ignore html, let's hope a plain text contained everything important
+        else
+          STDERR.puts "unsupported content type: #{part.content_type}"
+        end
       end
+
+    else
+
+      unless mail.body.decoded.blank?
+        text2tiff( mail.body.decoded ).each do |tiff|
+          frames << tiff
+        end
+      end
+
     end
 
   end
 
   def write(path)
     render
+    raise NoContentFound if frames.empty?
     path += '.tiff' unless path.ends_with?('.tiff')
     frames.write(path)
   end
