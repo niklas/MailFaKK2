@@ -41,7 +41,7 @@ TODO
  * [x] append OpenOffice.org documents 
  * [ ] append MS Office documents
  * [ ] write TIFF and callfile
- * [ ] procmail mode
+ * [-] procmail mode (untested)
  * [ ] header and footer for every frame
  * [ ] gemspec
  * [ ] check if fax was delivered (callfile moved to outgoing_done)
