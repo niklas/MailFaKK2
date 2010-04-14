@@ -1,0 +1,20 @@
+Return-Path: <user@example.com>
+X-Original-To: 01189998819991197253@fax.local
+Delivered-To: fax@example.com
+From: Text User <text-user@example.com>
+To: Fax <fax@example.com>
+Date: Tue, 13 Apr 2010 21:31:58 +0200
+Subject: A simple text to fax
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+
+Dear reader,
+
+    please do not use dead trees to read your mail, even on the toilet.
+
+    this is another line. And know what?
+
+    long line is looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong!!!11eleven
+
+Thanks

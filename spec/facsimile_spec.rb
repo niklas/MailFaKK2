@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "mime with text only" do
   before(:each) do
-    @mail_path = mail_path('mime_only_text')
+    @mail_path = mail_path('only_text')
     @fax = Facsimile.new @mail_path
   end
 
@@ -11,7 +11,7 @@ describe "mime with text only" do
   end
 
   it 'should render 1 frame from body' do
-    @fax.render
+    @fax.write result_path('only_text')
     @fax.frames.should be_an(Magick::ImageList)
     @fax.should have(1).frame
   end

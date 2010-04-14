@@ -13,3 +13,9 @@ def mail_path(name)
   name += '.mail' unless name.ends_with?('.mail')
   File.join APP_ROOT, 'spec', 'fixtures', name
 end
+
+def result_path(name)
+  name += '.tiff' unless name.ends_with?('.tiff')
+  File.join ResultsDir, name
+
+end

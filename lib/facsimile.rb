@@ -45,6 +45,12 @@ class Facsimile
 
   end
 
+  def write(path)
+    render
+    path += '.tiff' unless path.ends_with?('.tiff')
+    frames.write(path)
+  end
+
   private
 
   def text2tiff(text)
