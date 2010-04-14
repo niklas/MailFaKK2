@@ -8,3 +8,8 @@ Spec::Runner.configure do |config|
     FileUtils.mkdir_p ResultsDir
   end
 end
+
+def mail_path(name)
+  name += '.mail' unless name.ends_with?('.mail')
+  File.join APP_ROOT, 'spec', 'fixtures', name
+end
