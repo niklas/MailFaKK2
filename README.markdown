@@ -7,13 +7,15 @@ A email to fax gateway for asterisk. It will work as a procmail filter.
 Motivation
 ==========
 
-After trying out several other gateways we did not find any which
+After trying out several other email to fax gateways we came to the conclusion that not any of them
 
  * does not need java
  * is compatible with asterisk 1.6
  * does not cost money
- * has no tests
+ * has tests
  * just works
+
+MailFaKK2 tries to live up to all these requirements.
 
 
 Installation
