@@ -42,3 +42,7 @@ TODO
  * [ ] procmail mode
  * [ ] header and footer for every frame
 
+Meta
+====
+
+This product is proudly presented to you by [Planetary Networks](http://planetary-networks.de).
