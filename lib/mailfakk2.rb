@@ -12,4 +12,8 @@ class MailFakk2
   def deliver
     self
   end
+
+  def config
+    @config ||= Configuration.load
+  end
 end

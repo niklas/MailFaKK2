@@ -9,4 +9,5 @@ require 'RMagick'
 require 'tempfile'
 
 require 'lib/facsimile'
+require 'lib/configuration'
 require 'lib/mailfakk2'

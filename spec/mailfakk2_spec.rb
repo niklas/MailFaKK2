@@ -10,6 +10,9 @@ describe "MailFakk2 delivery" do
     @fakk.fax.should be_a(Facsimile)
   end
 
+  it 'should offer configuration' do
+    @fakk.config.should be_a(Configuration)
+  end
   it 'should get its configuration from a file (system, home)'
   it 'maybe should detach from procmail to enhance processing speed'
   it 'should save the tiff to the archive path'
