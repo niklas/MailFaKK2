@@ -1,4 +1,6 @@
 class MailFakk2
+  include Logging
+
   def self.deliver!(source)
     new(source).deliver!
   end
@@ -10,6 +12,7 @@ class MailFakk2
   end
 
   def deliver!
+    log("sending fax to #{@fax.number}")
     @fax.write( archive_path )
     write_callfile
     self

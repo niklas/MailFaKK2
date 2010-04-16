@@ -1,4 +1,5 @@
 class Facsimile
+  include Logging
 
   Width = 1728
   Height = 2156
@@ -64,6 +65,8 @@ class Facsimile
   def write(path)
     render
     raise NoContentFound if frames.empty?
+    path = File.expand_path path
+    log("writing facsimile to #{path}")
     path += '.tiff' unless path.ends_with?('.tiff')
     dir = File.dirname path
     FileUtils.mkdir_p(dir) unless File.directory?(dir)

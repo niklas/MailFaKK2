@@ -8,6 +8,7 @@ require 'prawn'
 require 'RMagick'
 require 'tempfile'
 
+require 'lib/logging'
 require 'lib/facsimile'
 require 'lib/configuration'
 require 'lib/mailfakk2'
