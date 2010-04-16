@@ -4,11 +4,8 @@ require File.expand_path(File.join(File.dirname(__FILE__),'..','config','env'))
 
 ResultsDir = File.join APP_ROOT, 'tmp', 'results'
 
-Spec::Runner.configure do |config|
-  config.before(:each) do
-    FileUtils.mkdir_p ResultsDir
-  end
-end
+FileUtils.rm_rf ResultsDir if File.exists?(ResultsDir)
+FileUtils.mkdir_p ResultsDir
 
 def mail_path(name)
   name += '.mail' unless name.ends_with?('.mail')
@@ -18,4 +15,11 @@ end
 def result_path(name)
   name += '.tiff' unless name.ends_with?('.tiff')
   File.join ResultsDir, name
+end
+
+def test_configuration
+  @@test_configuration ||= Configuration.build({
+    'outgoing_call_dir' => ResultsDir,
+    'archive_path'      => ResultsDir
+  })
 end

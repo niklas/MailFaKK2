@@ -72,6 +72,10 @@ class Facsimile
     "#{id}.tiff"
   end
 
+  def callfile_name
+    "#{id}.call"
+  end
+
   def id
     unless mail.has_message_id?
       mail.add_message_id("#{Time.now.iso8601}-#{Process.pid}")

@@ -45,6 +45,6 @@ class Configuration < Hash
   end
 
   def self.build(hash)
-    new.update(hash)
+    new.update(Defaults).update(hash)
   end
 end
