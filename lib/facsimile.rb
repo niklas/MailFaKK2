@@ -23,8 +23,8 @@ class Facsimile
   end
 
   def number
-    n = mail.header['X-Original-To'].andand.to_s || mail.to.first
-    if n.to_s =~ /^(\d{5,})/
+    n = mail.header['X-Original-To'].andand.to_s || mail.to.andand.first
+    if n.present? && n.to_s =~ /^(\d{5,})/
       return $1
     else
       raise NoPhoneNumberFound, "could not find any phone number"
