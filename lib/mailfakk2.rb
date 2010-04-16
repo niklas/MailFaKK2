@@ -31,6 +31,7 @@ class MailFakk2
     tmp = Tempfile.new('call')
     tmp.puts callfile_contents
     tmp.close
+    FileUtils.mkdir_p config.outgoing_call_dir
     FileUtils.mv tmp.path, callfile_path
     FileUtils.chmod 0666, callfile_path
   end

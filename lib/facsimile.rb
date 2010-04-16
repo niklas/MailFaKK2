@@ -65,6 +65,8 @@ class Facsimile
     render
     raise NoContentFound if frames.empty?
     path += '.tiff' unless path.ends_with?('.tiff')
+    dir = File.dirname path
+    FileUtils.mkdir_p(dir) unless File.directory?(dir)
     frames.write(path)
   end
 
