@@ -27,10 +27,6 @@ Debian / Ubuntu
  * sudo apt-get install imagemagick gs unoconv openoffice.org-headless rubygems xvfb
  * sudo gem install active_support andand rmagick mail prawn
 
-If you want to run the specs
-
- * sudo gem install fakefs
-
 Cons
 ====
 
