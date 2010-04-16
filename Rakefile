@@ -32,6 +32,11 @@ begin
 
       MIT-LICENSE
     }
+
+    gemspec.add_dependency('activesupport', '>=2.3.5')
+    gemspec.add_dependency('andand', '>=1.3.1')
+    gemspec.add_dependency('mail', '>=2.2.0')
+    gemspec.add_dependency('prawn', '>=0.8.4')
   end  
   Jeweler::GemcutterTasks.new  
 rescue LoadError  

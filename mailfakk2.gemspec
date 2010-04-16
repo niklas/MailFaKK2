@@ -50,9 +50,21 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<active_support>, [">= 2.3.5"])
+      s.add_runtime_dependency(%q<andand>, [">= 1.3.1"])
+      s.add_runtime_dependency(%q<mail>, [">= 2.2.0"])
+      s.add_runtime_dependency(%q<prawn>, [">= 0.8.4"])
     else
+      s.add_dependency(%q<active_support>, [">= 2.3.5"])
+      s.add_dependency(%q<andand>, [">= 1.3.1"])
+      s.add_dependency(%q<mail>, [">= 2.2.0"])
+      s.add_dependency(%q<prawn>, [">= 0.8.4"])
     end
   else
+    s.add_dependency(%q<active_support>, [">= 2.3.5"])
+    s.add_dependency(%q<andand>, [">= 1.3.1"])
+    s.add_dependency(%q<mail>, [">= 2.2.0"])
+    s.add_dependency(%q<prawn>, [">= 0.8.4"])
   end
 end
 
