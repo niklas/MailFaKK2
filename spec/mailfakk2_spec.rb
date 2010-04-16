@@ -51,6 +51,7 @@ describe "MailFakk2" do
     it 'should wait for the callfile to be moved to outgoing_done'
     it 'should deliver a mail if no number was found'
     it 'should deliver a mail if sending the fax failed'
+    it 'may deliver a mail report for successfull delivery'
   end
   it 'maybe should detach from procmail to enhance processing speed'
 end
