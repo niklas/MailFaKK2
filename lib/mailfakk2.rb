@@ -43,6 +43,7 @@ WaitTime: 20
 Context: incoming-fax
 Application: SendFax
 Data:#{archive_path}
+Archive: yes
     EOCALL
   end
 end
