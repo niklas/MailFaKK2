@@ -7,5 +7,6 @@ include Logging
 begin
   fakk = MailFakk2.deliver!(STDIN)
 rescue Exception => e
-  log(e.message, :error)
+  log(e.message, :err)
+  STDERR.puts e.message
 end
