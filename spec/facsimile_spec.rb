@@ -15,6 +15,8 @@ describe "text only" do
     @fax.frames.should be_an(Magick::ImageList)
     @fax.should have(1).frame
   end
+
+  it 'should add footer and header'
 end
 
 describe "text only as IO (like STDIN)" do
