@@ -6,8 +6,10 @@ class Facsimile
 
   #include ActiveSupport::Memoization
 
-  class NoPhoneNumberFound < Exception; end
-  class NoContentFound < Exception; end
+  class Error < ::Exception; end
+  class NoPhoneNumberFound < Error; end
+  class NoContentFound < Error; end
+  class BadContent < Error; end
 
   attr_reader :frames
   attr_reader :mail
@@ -43,10 +45,14 @@ class Facsimile
           add_frames text2tiff( part.decoded )
         when %r'opendocument\.text'
           add_frames oo2tiff( part.decoded )
+        when %r'openxmlformats-officedocument' # docx, xlsx
+          add_frames oo2tiff( part.decoded, part.filename )
         when %r'text/html'
           # FIXME ignore html, let's hope a plain text contained everything important
+        when %r'multipart/alternative'
+          # ignore this, stupid outlook
         else
-          STDERR.puts "unsupported content type: #{part.content_type}"
+          log "unsupported content type: #{part.content_type}"
         end
       end
 
@@ -120,15 +126,25 @@ class Facsimile
     read_frame dest.path
   end
 
-  def oo2tiff(source_data)
-    source = mktemp('oo', false)
+  # For some filetypes we need the filename to apend the same extention to the tempfile
+  def oo2tiff(source_data, filename=nil)
+    if filename.blank?
+      source = mktemp('oo', false)
+      pdf_path = source.path + '.pdf'
+    else
+      extention = filename.split('.').last
+      source = mktemp(['oo', ".#{extention}"], false)
+      pdf_path = source.path.sub(/#{extention}$/,'pdf')
+    end
     source.write source_data
     source.close
 
     dest = mktemp('pdf')
     xvfb("unoconv -f pdf #{source.path}")
-    FileUtils.mv source.path + '.pdf', dest.path
-    pdf2tiff(dest.path)
+    if File.file?(pdf_path)
+      FileUtils.mv pdf_path, dest.path
+      pdf2tiff(dest.path)
+    end
   end
 
   def text2pdf(source)

@@ -68,3 +68,16 @@ describe "text with attached OpenOffice Writer Document (2 Pages)" do
   end
   
 end
+
+describe "mail with word (2 pages) and excel attachment" do
+  before(:each) do
+    @mail_path = mail_path('word_and_excel')
+    @fax = Facsimile.new @mail_path
+  end
+
+  it 'should produce 2+1 frames' do
+    @fax.write result_path('word_and_excel')
+    @fax.should have(3).frames
+  end
+  
+end
