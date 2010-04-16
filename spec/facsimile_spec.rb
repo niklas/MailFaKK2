@@ -33,6 +33,7 @@ describe "text only as IO (like STDIN)" do
   it 'should provide filename' do
     @fax.filename.should =~ /.{10,}\.tiff/
   end
+
 end
 
 describe "multipart from word mail client" do

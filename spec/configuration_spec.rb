@@ -13,6 +13,7 @@ describe Configuration do
       File.stub!(:file?).and_return(false)
       c = Configuration.load
       Configuration::Defaults.each do |k,v|
+        c[k].should == v
         c.send(k).should == v
       end
     end
