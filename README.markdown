@@ -34,16 +34,16 @@ If you plan to spam by fax you should consider another product. MailFaKK2 is
 kind of slow. This is caused by launching OpenOffice.org for every conversion.
 Speed is not a priority for us (yet).
 
-TODO
-====
+TODO / Features
+===============
 
  * [x] generate cover sheet TIFF frame from email body
  * [x] append OpenOffice.org documents 
  * [ ] append MS Office documents
- * [ ] write TIFF and callfile
- * [-] procmail mode (untested)
+ * [x] write TIFF and callfile
+ * [x] procmail mode
  * [ ] header and footer for every frame
- * [ ] gemspec
+ * [x] gemspec
  * [ ] check if fax was delivered (callfile moved to outgoing_done)
 
 Meta
