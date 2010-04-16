@@ -1,6 +1,6 @@
 class MailFakk2
-  def self.deliver(source)
-    new(source).deliver
+  def self.deliver!(source)
+    new(source).deliver!
   end
 
   attr_reader :fax
