@@ -25,7 +25,7 @@ Debian / Ubuntu
 ---------------
 
  * sudo apt-get install ruby ruby-dev gs unoconv openoffice.org-headless rubygems xvfb librmagick-ruby 
- * sudo gem install active_support andand mail prawn
+ * sudo gem install mailfakk2
 
 Cons
 ====
