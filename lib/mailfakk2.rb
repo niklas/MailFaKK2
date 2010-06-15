@@ -32,8 +32,10 @@ class MailFakk2
 
   def write_callfile
     tmp = Tempfile.new('call')
+    log("write tmp callfile to #{tmp.path}")
     tmp.puts callfile_contents
     tmp.close
+    log("mv callfile to asterisk spool: #{callfile_path}")
     FileUtils.mkdir_p config.outgoing_call_dir
     FileUtils.mv tmp.path, callfile_path
     FileUtils.chmod 0666, callfile_path
