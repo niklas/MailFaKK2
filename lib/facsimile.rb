@@ -47,6 +47,8 @@ class Facsimile
           add_frames oo2tiff( part.decoded )
         when %r'openxmlformats-officedocument' # docx, xlsx
           add_frames oo2tiff( part.decoded, part.filename )
+        when %r'application/pdf'
+          add_frames pdfdata2tiff( part.decoded )
         when %r'text/html'
           # FIXME ignore html, let's hope a plain text contained everything important
         when %r'multipart/alternative'
@@ -124,6 +126,13 @@ class Facsimile
     end.join(' ')
     system(command)
     read_frame dest.path
+  end
+
+  def pdfdata2tiff(source_data)
+    pdf = mktemp('pdf')
+    pdf.puts source_data
+    pdf.close
+    pdf2tiff(pdf.path)
   end
 
   # For some filetypes we need the filename to apend the same extention to the tempfile
