@@ -1,5 +1,6 @@
 require 'ostruct'
 class Configuration < Hash
+  include Logging
   Defaults = {
     'outgoing_call_dir' => '/var/spool/asterisk/outgoing',
     'archive_path'      => File.join(ENV['HOME'], 'facsimiles')
@@ -29,6 +30,7 @@ class Configuration < Hash
       Sources.each do |source|
 
         if File.file?(source) && File.readable?(source)
+          log("loading config from #{source}")
           loaded = YAML.load_file source
           if loaded.is_a?(Hash)
             h.merge! loaded
