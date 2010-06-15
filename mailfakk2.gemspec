@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Niklas Hofer"]
-  s.date = %q{2010-04-16}
+  s.date = %q{2010-06-15}
   s.default_executable = %q{mailfakk2}
   s.description = %q{
       MailFaKK2 acts as a fax gateway. With the proper setup you can send
