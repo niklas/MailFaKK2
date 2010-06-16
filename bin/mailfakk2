@@ -7,6 +7,8 @@ include Logging
 begin
   fakk = MailFakk2.deliver!(STDIN)
 rescue Exception => e
-  log(e.message, :err)
-  STDERR.puts e.message
+  message = "Could not send fax: #{e.message}"
+  log(message, :err)
+  log(e.backtrace.inspect, :err)
+  STDERR.puts message
 end
