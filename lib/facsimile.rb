@@ -130,8 +130,9 @@ class Facsimile
 
   def pdfdata2tiff(source_data)
     pdf = mktemp('pdf')
-    pdf.puts source_data
-    pdf.close
+    File.open pdf.path, 'w' do |f|
+      f.puts source_data
+    end
     pdf2tiff(pdf.path)
   end
 
