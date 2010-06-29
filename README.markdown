@@ -34,6 +34,8 @@ If you plan to spam by fax you should consider another product. MailFaKK2 is
 kind of slow. This is caused by launching OpenOffice.org for every conversion.
 Speed is not a priority for us (yet).
 
+Asterisk seems to have some problems with ISDN facsimiles.
+
 TODO / Features
 ===============
 
